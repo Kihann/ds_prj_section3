@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      주식 가격 예측 페이지
+    </title>
+  </head>
+
+  <body><center>
+    <h1 id="clock" style="color:black;">clock</h1>
+    
+    <script>
+        var Target = document.getElementById("clock");
+        var Target_apm = document.getElementById("apm");
+        function clock() {
+            var time = new Date();
+            
+            var year = time.getYear();
+            var month = time.getMonth();
+            var date = time.getDate();
+            var day = time.getDay();
+            var week = ['일', '월', '화', '수', '목', '금', '토'];
+
+            var hours = time.getHours();
+            var minutes = time.getMinutes();
+            var seconds = time.getSeconds();
+            var AmPm ="AM";
+            if(hours > 12){   
+                var AmPm ="PM";
+                hours %= 12;
+            }
+
+
+            Target.innerText = 
+            `현재 시각\n` +
+            `${year + 1900}년 ${month + 1}월 ${date}일 ${week[day]}요일 ` +
+            `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
+            +`\n\n삼성전자 주식의 향후 5일 예측 가격`
+            +`\n폐장일 예측 데이터(공휴일, 주말)은 무시하시면 됩니다.`;
+                
+        }
+        clock();
+        setInterval(clock, 1000); // 1초마다 실행
+    </script>
+    <h2></h2>
+  </body>
+</html>
